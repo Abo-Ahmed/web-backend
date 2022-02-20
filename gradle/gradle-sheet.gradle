@@ -1,0 +1,64 @@
+
+
+> gradle supports the automatic download and configuration of dependencies or other libraries.
+
+> Groovy features not available in Java include both static and dynamic typing (with the keyword def)
+, operator overloading, native syntax for lists and associative arrays (maps), 
+native support for regular expressions, polymorphic iteration
+
+
+
+> The Document Object Model (DOM) is a cross-platform and language-independent 
+application programming interface that treats a HTML, XHTML, or XML document 
+as a tree structure wherein each node is an object representing a part of the document.
+The objects can be manipulated programmatically and any visible changes occurring 
+as a result may then be reflected in the display of the document
+
+
+> A Groovy script is fully parsed, compiled, and generated before executing (similar to Perl and Ruby).
+
+
+> JavaBeans are classes that encapsulate many objects into a single object (the bean).
+ They are serializable, have a zero-argument constructor, and allow access to properties 
+ using getter and setter methods. The name "Bean" was given to encompass this standard, 
+ which aims to create reusable software components for Java.
+
+
+
+> GroovyBeans are Groovy version of JavaBeans. 
+Groovy implicitly generates getters and setters. 
+In the following code, setColor(String color) and getColor() are implicitly generated. 
+
+
+
+> Groovy syntax permits omitting parentheses and dots in some situations. The following groovy code
+
+take(coffee).with(sugar, milk).and(liquor)
+can be written as
+take coffee with sugar, milk and liquor
+
+
+// define array of range of values
+> def range = 0..5 
+
+
+// methods
+static def DisplayName() {
+      println("This is how methods work in groovy");
+      println("This is an example of a simple method");
+   } 
+
+
+1..10 - An example of an inclusive Range
+1..<10 - An example of an exclusive Range
+‘a’..’x’ – Ranges can also consist of characters
+10..1 – Ranges can also be in descending order
+‘x’..’a’ – Ranges can also consist of characters and be in descending order.
+
+
+
+
+fulll groovy toturial
+https://www.tutorialspoint.com/groovy/index.htm
+
+
