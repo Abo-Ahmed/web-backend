@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "21e3204c-2db8-454b-b2ec-519072d2f5e1",
+		"name": "great-notion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19682807"
+	},
+	"item": [
+		{
+			"name": "create new note",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "secret_dsMZuFym6kZHKh8WoRLFNKlVSxeFVAqNACbvRrLQzmf",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "notion-version",
+						"value": "2022-02-22",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"parent\": {\r\n        \"database_id\": \"0a03987dc49d4a7c93b8644aebb7258f\"\r\n    },\r\n    \"icon\": {\r\n    \t\"type\": \"emoji\",\r\n\t\t\t\"emoji\": \"🥬\"\r\n  \t},\r\n    \"cover\": {\r\n  \t\t\"type\": \"external\",\r\n    \t\"external\": {\r\n    \t\t\"url\": \"https://upload.wikimedia.org/wikipedia/commons/6/62/Tuscankale.jpg\"\r\n    \t}\r\n  \t},\r\n    \"properties\": {\r\n        \"Name\": {\r\n            \"title\": [\r\n                {\r\n                    \"type\": \"text\",\r\n                    \"text\": {\r\n                        \"content\": \"Kale Content - Created this page from Notion API\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    },\r\n    \"children\": [\r\n\t\t{\r\n\t\t\t\"object\": \"block\",\r\n\t\t\t\"type\": \"heading_2\",\r\n\t\t\t\"heading_2\": {\r\n\t\t\t\t\"rich_text\": [{ \"type\": \"text\", \"text\": { \"content\": \"Lacinato kale\" } }]\r\n\t\t\t}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"object\": \"block\",\r\n\t\t\t\"type\": \"paragraph\",\r\n\t\t\t\"paragraph\": {\r\n\t\t\t\t\"rich_text\": [\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\"type\": \"text\",\r\n\t\t\t\t\t\t\"text\": {\r\n\t\t\t\t\t\t\t\"content\": \"Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.\",\r\n\t\t\t\t\t\t\t\"link\": { \"url\": \"https://en.wikipedia.org/wiki/Lacinato_kale\" }\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t}\r\n\t]\r\n}"
+				},
+				"url": {
+					"raw": "https://api.notion.com/v1/pages",
+					"protocol": "https",
+					"host": [
+						"api",
+						"notion",
+						"com"
+					],
+					"path": [
+						"v1",
+						"pages"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Page with Content Copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "secret_dsMZuFym6kZHKh8WoRLFNKlVSxeFVAqNACbvRrLQzmf"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Notion-Version",
+						"value": "2022-02-22",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"parent\": {\n        \"database_id\": \"0a03987dc49d4a7c93b8644aebb7258f\"\n    },\n    \"properties\": {\n        \"Type\": {\n            \"select\": {\n                \"id\": \"f96d0d0a-5564-4a20-ab15-5f040d49759e\",\n                \"name\": \"Article\",\n                \"color\": \"default\"\n            }\n        },\n        \"Score /5\": {\n            \"select\": {\n                \"id\": \"5c944de7-3f4b-4567-b3a1-fa2c71c540b6\",\n                \"name\": \"⭐️⭐️⭐️⭐️⭐️\",\n                \"color\": \"default\"\n            }\n        },\n        \"Name\": {\n            \"title\": [\n                {\n                    \"text\": {\n                        \"content\": \"New Media Article\"\n                    }\n                }\n            ]\n        },\n        \"Status\": {\n            \"select\": {\n                \"id\": \"8c4a056e-6709-4dd1-ba58-d34d9480855a\",\n                \"name\": \"Ready to Start\",\n                \"color\": \"yellow\"\n            }\n        },\n        \"Publisher\": {\n            \"select\": {\n                \"id\": \"01f82d08-aa1f-4884-a4e0-3bc32f909ec4\",\n                \"name\": \"The Atlantic\",\n                \"color\": \"red\"\n            }\n        },\n        \"Publishing/Release Date\": {\n            \"date\": {\n                \"start\": \"2020-12-08T12:00:00Z\",\n                \"end\": null\n            }\n        },\n        \"Link\": {\n            \"url\": \"https://www.nytimes.com/2018/10/21/opinion/who-will-teach-silicon-valley-to-be-ethical.html\"\n        },\n        \"Summary\": {\n            \"rich_text\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": {\n                        \"content\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                        \"link\": null\n                    },\n                    \"annotations\": {\n                        \"bold\": false,\n                        \"italic\": false,\n                        \"strikethrough\": false,\n                        \"underline\": false,\n                        \"code\": false,\n                        \"color\": \"default\"\n                    },\n                    \"plain_text\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                    \"href\": null\n                }\n            ]\n        },\n        \"Read\": {\n            \"checkbox\": false\n        }\n    },\n    \"children\": [\n        {\n            \"object\": \"block\",\n            \"type\": \"heading_2\",\n            \"heading_2\": {\n                \"rich_text\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": {\n                            \"content\": \"Lacinato kale\"\n                        }\n                    }\n                ]\n            }\n        },\n        {\n            \"object\": \"block\",\n            \"type\": \"paragraph\",\n            \"paragraph\": {\n                \"text\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": {\n                            \"content\": \"Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.\",\n                            \"link\": {\n                                \"url\": \"https://en.wikipedia.org/wiki/Lacinato_kale\"\n                            }\n                        }\n                    }\n                ]\n            }\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://api.notion.com/v1/pages",
+					"protocol": "https",
+					"host": [
+						"api",
+						"notion",
+						"com"
+					],
+					"path": [
+						"v1",
+						"pages"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200 Success - Create a Page with Content",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "secret_dsMZuFym6kZHKh8WoRLFNKlVSxeFVAqNACbvRrLQzmf"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Notion-Version",
+								"value": "2022-02-22",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"parent\": {\n        \"database_id\": \"0a03987dc49d4a7c93b8644aebb7258f\"\n    },\n    \"properties\": {\n        \"Type\": {\n            \"select\": {\n                \"id\": \"f96d0d0a-5564-4a20-ab15-5f040d49759e\",\n                \"name\": \"Article\",\n                \"color\": \"default\"\n            }\n        },\n        \"Score /5\": {\n            \"select\": {\n                \"id\": \"5c944de7-3f4b-4567-b3a1-fa2c71c540b6\",\n                \"name\": \"⭐️⭐️⭐️⭐️⭐️\",\n                \"color\": \"default\"\n            }\n        },\n        \"Name\": {\n            \"title\": [\n                {\n                    \"text\": {\n                        \"content\": \"New Media Article\"\n                    }\n                }\n            ]\n        },\n        \"Status\": {\n            \"select\": {\n                \"id\": \"8c4a056e-6709-4dd1-ba58-d34d9480855a\",\n                \"name\": \"Ready to Start\",\n                \"color\": \"yellow\"\n            }\n        },\n        \"Publisher\": {\n            \"select\": {\n                \"id\": \"01f82d08-aa1f-4884-a4e0-3bc32f909ec4\",\n                \"name\": \"The Atlantic\",\n                \"color\": \"red\"\n            }\n        },\n        \"Publishing/Release Date\": {\n            \"date\": {\n                \"start\": \"2020-12-08T12:00:00Z\",\n                \"end\": null\n            }\n        },\n        \"Link\": {\n            \"url\": \"https://www.nytimes.com/2018/10/21/opinion/who-will-teach-silicon-valley-to-be-ethical.html\"\n        },\n        \"Summary\": {\n            \"rich_text\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": {\n                        \"content\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                        \"link\": null\n                    },\n                    \"annotations\": {\n                        \"bold\": false,\n                        \"italic\": false,\n                        \"strikethrough\": false,\n                        \"underline\": false,\n                        \"code\": false,\n                        \"color\": \"default\"\n                    },\n                    \"plain_text\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                    \"href\": null\n                }\n            ]\n        },\n        \"Read\": {\n            \"checkbox\": false\n        }\n    },\n    \"children\": [\n        {\n            \"object\": \"block\",\n            \"type\": \"heading_2\",\n            \"heading_2\": {\n                \"rich_text\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": {\n                            \"content\": \"Lacinato kale\"\n                        }\n                    }\n                ]\n            }\n        },\n        {\n            \"object\": \"block\",\n            \"type\": \"paragraph\",\n            \"paragraph\": {\n                \"text\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": {\n                            \"content\": \"Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.\",\n                            \"link\": {\n                                \"url\": \"https://en.wikipedia.org/wiki/Lacinato_kale\"\n                            }\n                        }\n                    }\n                ]\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://api.notion.com/v1/pages/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"notion",
+								"com"
+							],
+							"path": [
+								"v1",
+								"pages",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Mar 2022 05:24:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "notion_browser_id=6498f46f-cb2b-4bbf-98a5-1bc1c36fd4a7; Domain=www.notion.so; Path=/; Expires=Thu, 02 Mar 2023 05:24:58 GMT; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "notion_check_cookie_consent=false; Domain=www.notion.so; Path=/; Expires=Thu, 03 Mar 2022 05:24:58 GMT; Secure"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=5184000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gist.github.com https://apis.google.com https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://widget.intercom.io https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com https://analytics.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://embed.typeform.com https://admin.typeform.com https://public.profitwell.com js.sentry-cdn.com https://js.chilipiper.com https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src 'self' https://msgstore.www.notion.so wss://msgstore.www.notion.so ws://localhost:* ws://127.0.0.1:* https://notion-emojis.s3-us-west-2.amazonaws.com https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com https://notion-production-snapshots-2.s3.us-west-2.amazonaws.com https: http: https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://cdn.segment.com https://api.segment.io https://analytics.pgncs.notion.so https://api.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://cdn.contentful.com https://preview.contentful.com https://images.ctfassets.net https://www2.profitwell.com https://tracking.chilipiper.com https://api.chilipiper.com https://api.unsplash.com https://boards-api.greenhouse.io https://api.statuspage.io https://pgncd.notion.so https://api.statsig.com; font-src 'self' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src 'self' data: blob: https: https://platform.twitter.com https://syndication.twitter.com https://pbs.twimg.com https://ton.twimg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://github.githubassets.com https://js.chilipiper.com https://platform.twitter.com https://ton.twimg.com; frame-src https: http:; media-src https: http:"
+						},
+						{
+							"key": "X-Content-Security-Policy",
+							"value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gist.github.com https://apis.google.com https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://widget.intercom.io https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com https://analytics.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://embed.typeform.com https://admin.typeform.com https://public.profitwell.com js.sentry-cdn.com https://js.chilipiper.com https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src 'self' https://msgstore.www.notion.so wss://msgstore.www.notion.so ws://localhost:* ws://127.0.0.1:* https://notion-emojis.s3-us-west-2.amazonaws.com https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com https://notion-production-snapshots-2.s3.us-west-2.amazonaws.com https: http: https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://cdn.segment.com https://api.segment.io https://analytics.pgncs.notion.so https://api.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://cdn.contentful.com https://preview.contentful.com https://images.ctfassets.net https://www2.profitwell.com https://tracking.chilipiper.com https://api.chilipiper.com https://api.unsplash.com https://boards-api.greenhouse.io https://api.statuspage.io https://pgncd.notion.so https://api.statsig.com; font-src 'self' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src 'self' data: blob: https: https://platform.twitter.com https://syndication.twitter.com https://pbs.twimg.com https://ton.twimg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://github.githubassets.com https://js.chilipiper.com https://platform.twitter.com https://ton.twimg.com; frame-src https: http:; media-src https: http:"
+						},
+						{
+							"key": "X-WebKit-CSP",
+							"value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gist.github.com https://apis.google.com https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://widget.intercom.io https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com https://analytics.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://embed.typeform.com https://admin.typeform.com https://public.profitwell.com js.sentry-cdn.com https://js.chilipiper.com https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src 'self' https://msgstore.www.notion.so wss://msgstore.www.notion.so ws://localhost:* ws://127.0.0.1:* https://notion-emojis.s3-us-west-2.amazonaws.com https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com https://notion-production-snapshots-2.s3.us-west-2.amazonaws.com https: http: https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://cdn.segment.com https://api.segment.io https://analytics.pgncs.notion.so https://api.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://cdn.contentful.com https://preview.contentful.com https://images.ctfassets.net https://www2.profitwell.com https://tracking.chilipiper.com https://api.chilipiper.com https://api.unsplash.com https://boards-api.greenhouse.io https://api.statuspage.io https://pgncd.notion.so https://api.statsig.com; font-src 'self' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src 'self' data: blob: https: https://platform.twitter.com https://syndication.twitter.com https://pbs.twimg.com https://ton.twimg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://github.githubassets.com https://js.chilipiper.com https://platform.twitter.com https://ton.twimg.com; frame-src https: http:; media-src https: http:"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"8a3-gcmRViEt7UpvGwWtJJn236x6UKc\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "6e57b587edb0594a-IAD"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"object\": \"page\",\n    \"id\": \"672b014a-2626-4ada-9211-fb3613d07ae2\",\n    \"created_time\": \"2022-03-02T05:24:00.000Z\",\n    \"last_edited_time\": \"2022-03-02T05:24:00.000Z\",\n    \"created_by\": {\n        \"object\": \"user\",\n        \"id\": \"92a680bb-6970-4726-952b-4f4c03bff617\"\n    },\n    \"last_edited_by\": {\n        \"object\": \"user\",\n        \"id\": \"92a680bb-6970-4726-952b-4f4c03bff617\"\n    },\n    \"cover\": null,\n    \"icon\": null,\n    \"parent\": {\n        \"type\": \"database_id\",\n        \"database_id\": \"8e2c2b76-9e1d-47d2-87b9-ed3035d607ae\"\n    },\n    \"archived\": false,\n    \"properties\": {\n        \"Score /5\": {\n            \"id\": \")Y7%22\",\n            \"type\": \"select\",\n            \"select\": {\n                \"id\": \"5c944de7-3f4b-4567-b3a1-fa2c71c540b6\",\n                \"name\": \"⭐️⭐️⭐️⭐️⭐️\",\n                \"color\": \"default\"\n            }\n        },\n        \"Type\": {\n            \"id\": \"%2F7eo\",\n            \"type\": \"select\",\n            \"select\": {\n                \"id\": \"672b014a-2626-4ada-9211-fb3613d07ae2\",\n                \"name\": \"Article\",\n                \"color\": \"default\"\n            }\n        },\n        \"Publisher\": {\n            \"id\": \"%3E%24Pb\",\n            \"type\": \"select\",\n            \"select\": {\n                \"id\": \"01f82d08-aa1f-4884-a4e0-3bc32f909ec4\",\n                \"name\": \"The Atlantic\",\n                \"color\": \"red\"\n            }\n        },\n        \"Summary\": {\n            \"id\": \"%3F%5C25\",\n            \"type\": \"rich_text\",\n            \"rich_text\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": {\n                        \"content\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                        \"link\": null\n                    },\n                    \"annotations\": {\n                        \"bold\": false,\n                        \"italic\": false,\n                        \"strikethrough\": false,\n                        \"underline\": false,\n                        \"code\": false,\n                        \"color\": \"default\"\n                    },\n                    \"plain_text\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                    \"href\": null\n                }\n            ]\n        },\n        \"Publishing/Release Date\": {\n            \"id\": \"%3Fex%2B\",\n            \"type\": \"date\",\n            \"date\": {\n                \"start\": \"2020-12-08T12:00:00.000+00:00\",\n                \"end\": null,\n                \"time_zone\": null\n            }\n        },\n        \"Link\": {\n            \"id\": \"VVMi\",\n            \"type\": \"url\",\n            \"url\": \"https://www.nytimes.com/2018/10/21/opinion/who-will-teach-silicon-valley-to-be-ethical.html\"\n        },\n        \"Read\": {\n            \"id\": \"_MWJ\",\n            \"type\": \"checkbox\",\n            \"checkbox\": false\n        },\n        \"Status\": {\n            \"id\": \"%60zz5\",\n            \"type\": \"select\",\n            \"select\": {\n                \"id\": \"8c4a056e-6709-4dd1-ba58-d34d9480855a\",\n                \"name\": \"Ready to Start\",\n                \"color\": \"yellow\"\n            }\n        },\n        \"Author\": {\n            \"id\": \"qNw_\",\n            \"type\": \"multi_select\",\n            \"multi_select\": []\n        },\n        \"Name\": {\n            \"id\": \"title\",\n            \"type\": \"title\",\n            \"title\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": {\n                        \"content\": \"New Media Article\",\n                        \"link\": null\n                    },\n                    \"annotations\": {\n                        \"bold\": false,\n                        \"italic\": false,\n                        \"strikethrough\": false,\n                        \"underline\": false,\n                        \"code\": false,\n                        \"color\": \"default\"\n                    },\n                    \"plain_text\": \"New Media Article\",\n                    \"href\": null\n                }\n            ]\n        }\n    },\n    \"url\": \"https://www.notion.so/New-Media-Article-672b014a26264ada9211fb3613d07ae2\"\n}"
+				},
+				{
+					"name": "200 Success - Create a Page with Content",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "secret_dsMZuFym6kZHKh8WoRLFNKlVSxeFVAqNACbvRrLQzmf"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Notion-Version",
+								"value": "2022-02-22",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"parent\": {\n        \"database_id\": \"0a03987dc49d4a7c93b8644aebb7258f\"\n    },\n    \"properties\": {\n        \"Type\": {\n            \"select\": {\n                \"id\": \"f96d0d0a-5564-4a20-ab15-5f040d49759e\",\n                \"name\": \"Article\",\n                \"color\": \"default\"\n            }\n        },\n        \"Score /5\": {\n            \"select\": {\n                \"id\": \"5c944de7-3f4b-4567-b3a1-fa2c71c540b6\",\n                \"name\": \"⭐️⭐️⭐️⭐️⭐️\",\n                \"color\": \"default\"\n            }\n        },\n        \"Name\": {\n            \"title\": [\n                {\n                    \"text\": {\n                        \"content\": \"New Media Article\"\n                    }\n                }\n            ]\n        },\n        \"Status\": {\n            \"select\": {\n                \"id\": \"8c4a056e-6709-4dd1-ba58-d34d9480855a\",\n                \"name\": \"Ready to Start\",\n                \"color\": \"yellow\"\n            }\n        },\n        \"Publisher\": {\n            \"select\": {\n                \"id\": \"01f82d08-aa1f-4884-a4e0-3bc32f909ec4\",\n                \"name\": \"The Atlantic\",\n                \"color\": \"red\"\n            }\n        },\n        \"Publishing/Release Date\": {\n            \"date\": {\n                \"start\": \"2020-12-08T12:00:00Z\",\n                \"end\": null\n            }\n        },\n        \"Link\": {\n            \"url\": \"https://www.nytimes.com/2018/10/21/opinion/who-will-teach-silicon-valley-to-be-ethical.html\"\n        },\n        \"Summary\": {\n            \"rich_text\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": {\n                        \"content\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                        \"link\": null\n                    },\n                    \"annotations\": {\n                        \"bold\": false,\n                        \"italic\": false,\n                        \"strikethrough\": false,\n                        \"underline\": false,\n                        \"code\": false,\n                        \"color\": \"default\"\n                    },\n                    \"plain_text\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                    \"href\": null\n                }\n            ]\n        },\n        \"Read\": {\n            \"checkbox\": false\n        }\n    },\n    \"children\": [\n        {\n            \"object\": \"block\",\n            \"type\": \"heading_2\",\n            \"heading_2\": {\n                \"rich_text\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": {\n                            \"content\": \"Lacinato kale\"\n                        }\n                    }\n                ]\n            }\n        },\n        {\n            \"object\": \"block\",\n            \"type\": \"paragraph\",\n            \"paragraph\": {\n                \"text\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": {\n                            \"content\": \"Lacinato kale is a variety of kale with a long tradition in Italian cuisine, especially that of Tuscany. It is also known as Tuscan kale, Italian kale, dinosaur kale, kale, flat back kale, palm tree kale, or black Tuscan palm.\",\n                            \"link\": {\n                                \"url\": \"https://en.wikipedia.org/wiki/Lacinato_kale\"\n                            }\n                        }\n                    }\n                ]\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "https://api.notion.com/v1/pages/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"notion",
+								"com"
+							],
+							"path": [
+								"v1",
+								"pages",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 02 Mar 2022 05:24:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "notion_browser_id=6498f46f-cb2b-4bbf-98a5-1bc1c36fd4a7; Domain=www.notion.so; Path=/; Expires=Thu, 02 Mar 2023 05:24:58 GMT; Secure"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "notion_check_cookie_consent=false; Domain=www.notion.so; Path=/; Expires=Thu, 03 Mar 2022 05:24:58 GMT; Secure"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=5184000; includeSubDomains"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Content-Security-Policy",
+							"value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gist.github.com https://apis.google.com https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://widget.intercom.io https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com https://analytics.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://embed.typeform.com https://admin.typeform.com https://public.profitwell.com js.sentry-cdn.com https://js.chilipiper.com https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src 'self' https://msgstore.www.notion.so wss://msgstore.www.notion.so ws://localhost:* ws://127.0.0.1:* https://notion-emojis.s3-us-west-2.amazonaws.com https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com https://notion-production-snapshots-2.s3.us-west-2.amazonaws.com https: http: https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://cdn.segment.com https://api.segment.io https://analytics.pgncs.notion.so https://api.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://cdn.contentful.com https://preview.contentful.com https://images.ctfassets.net https://www2.profitwell.com https://tracking.chilipiper.com https://api.chilipiper.com https://api.unsplash.com https://boards-api.greenhouse.io https://api.statuspage.io https://pgncd.notion.so https://api.statsig.com; font-src 'self' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src 'self' data: blob: https: https://platform.twitter.com https://syndication.twitter.com https://pbs.twimg.com https://ton.twimg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://github.githubassets.com https://js.chilipiper.com https://platform.twitter.com https://ton.twimg.com; frame-src https: http:; media-src https: http:"
+						},
+						{
+							"key": "X-Content-Security-Policy",
+							"value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gist.github.com https://apis.google.com https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://widget.intercom.io https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com https://analytics.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://embed.typeform.com https://admin.typeform.com https://public.profitwell.com js.sentry-cdn.com https://js.chilipiper.com https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src 'self' https://msgstore.www.notion.so wss://msgstore.www.notion.so ws://localhost:* ws://127.0.0.1:* https://notion-emojis.s3-us-west-2.amazonaws.com https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com https://notion-production-snapshots-2.s3.us-west-2.amazonaws.com https: http: https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://cdn.segment.com https://api.segment.io https://analytics.pgncs.notion.so https://api.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://cdn.contentful.com https://preview.contentful.com https://images.ctfassets.net https://www2.profitwell.com https://tracking.chilipiper.com https://api.chilipiper.com https://api.unsplash.com https://boards-api.greenhouse.io https://api.statuspage.io https://pgncd.notion.so https://api.statsig.com; font-src 'self' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src 'self' data: blob: https: https://platform.twitter.com https://syndication.twitter.com https://pbs.twimg.com https://ton.twimg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://github.githubassets.com https://js.chilipiper.com https://platform.twitter.com https://ton.twimg.com; frame-src https: http:; media-src https: http:"
+						},
+						{
+							"key": "X-WebKit-CSP",
+							"value": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gist.github.com https://apis.google.com https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://widget.intercom.io https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com https://analytics.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://embed.typeform.com https://admin.typeform.com https://public.profitwell.com js.sentry-cdn.com https://js.chilipiper.com https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src 'self' https://msgstore.www.notion.so wss://msgstore.www.notion.so ws://localhost:* ws://127.0.0.1:* https://notion-emojis.s3-us-west-2.amazonaws.com https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com https://notion-production-snapshots-2.s3.us-west-2.amazonaws.com https: http: https://cdn.amplitude.com https://api.amplitude.com https://hkfxbbdzib.notion.so https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://cdn.segment.com https://api.segment.io https://analytics.pgncs.notion.so https://api.pgncs.notion.so https://o324374.ingest.sentry.io https://checkout.stripe.com https://js.stripe.com https://cdn.contentful.com https://preview.contentful.com https://images.ctfassets.net https://www2.profitwell.com https://tracking.chilipiper.com https://api.chilipiper.com https://api.unsplash.com https://boards-api.greenhouse.io https://api.statuspage.io https://pgncd.notion.so https://api.statsig.com; font-src 'self' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src 'self' data: blob: https: https://platform.twitter.com https://syndication.twitter.com https://pbs.twimg.com https://ton.twimg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://github.githubassets.com https://js.chilipiper.com https://platform.twitter.com https://ton.twimg.com; frame-src https: http:; media-src https: http:"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"8a3-gcmRViEt7UpvGwWtJJn236x6UKc\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "6e57b587edb0594a-IAD"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"object\": \"page\",\n    \"id\": \"672b014a-2626-4ada-9211-fb3613d07ae2\",\n    \"created_time\": \"2022-03-02T05:24:00.000Z\",\n    \"last_edited_time\": \"2022-03-02T05:24:00.000Z\",\n    \"created_by\": {\n        \"object\": \"user\",\n        \"id\": \"92a680bb-6970-4726-952b-4f4c03bff617\"\n    },\n    \"last_edited_by\": {\n        \"object\": \"user\",\n        \"id\": \"92a680bb-6970-4726-952b-4f4c03bff617\"\n    },\n    \"cover\": null,\n    \"icon\": null,\n    \"parent\": {\n        \"type\": \"database_id\",\n        \"database_id\": \"8e2c2b76-9e1d-47d2-87b9-ed3035d607ae\"\n    },\n    \"archived\": false,\n    \"properties\": {\n        \"Score /5\": {\n            \"id\": \")Y7%22\",\n            \"type\": \"select\",\n            \"select\": {\n                \"id\": \"5c944de7-3f4b-4567-b3a1-fa2c71c540b6\",\n                \"name\": \"⭐️⭐️⭐️⭐️⭐️\",\n                \"color\": \"default\"\n            }\n        },\n        \"Type\": {\n            \"id\": \"%2F7eo\",\n            \"type\": \"select\",\n            \"select\": {\n                \"id\": \"672b014a-2626-4ada-9211-fb3613d07ae2\",\n                \"name\": \"Article\",\n                \"color\": \"default\"\n            }\n        },\n        \"Publisher\": {\n            \"id\": \"%3E%24Pb\",\n            \"type\": \"select\",\n            \"select\": {\n                \"id\": \"01f82d08-aa1f-4884-a4e0-3bc32f909ec4\",\n                \"name\": \"The Atlantic\",\n                \"color\": \"red\"\n            }\n        },\n        \"Summary\": {\n            \"id\": \"%3F%5C25\",\n            \"type\": \"rich_text\",\n            \"rich_text\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": {\n                        \"content\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                        \"link\": null\n                    },\n                    \"annotations\": {\n                        \"bold\": false,\n                        \"italic\": false,\n                        \"strikethrough\": false,\n                        \"underline\": false,\n                        \"code\": false,\n                        \"color\": \"default\"\n                    },\n                    \"plain_text\": \"Some think chief ethics officers could help technology companies navigate political and social questions.\",\n                    \"href\": null\n                }\n            ]\n        },\n        \"Publishing/Release Date\": {\n            \"id\": \"%3Fex%2B\",\n            \"type\": \"date\",\n            \"date\": {\n                \"start\": \"2020-12-08T12:00:00.000+00:00\",\n                \"end\": null,\n                \"time_zone\": null\n            }\n        },\n        \"Link\": {\n            \"id\": \"VVMi\",\n            \"type\": \"url\",\n            \"url\": \"https://www.nytimes.com/2018/10/21/opinion/who-will-teach-silicon-valley-to-be-ethical.html\"\n        },\n        \"Read\": {\n            \"id\": \"_MWJ\",\n            \"type\": \"checkbox\",\n            \"checkbox\": false\n        },\n        \"Status\": {\n            \"id\": \"%60zz5\",\n            \"type\": \"select\",\n            \"select\": {\n                \"id\": \"8c4a056e-6709-4dd1-ba58-d34d9480855a\",\n                \"name\": \"Ready to Start\",\n                \"color\": \"yellow\"\n            }\n        },\n        \"Author\": {\n            \"id\": \"qNw_\",\n            \"type\": \"multi_select\",\n            \"multi_select\": []\n        },\n        \"Name\": {\n            \"id\": \"title\",\n            \"type\": \"title\",\n            \"title\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": {\n                        \"content\": \"New Media Article\",\n                        \"link\": null\n                    },\n                    \"annotations\": {\n                        \"bold\": false,\n                        \"italic\": false,\n                        \"strikethrough\": false,\n                        \"underline\": false,\n                        \"code\": false,\n                        \"color\": \"default\"\n                    },\n                    \"plain_text\": \"New Media Article\",\n                    \"href\": null\n                }\n            ]\n        }\n    },\n    \"url\": \"https://www.notion.so/New-Media-Article-672b014a26264ada9211fb3613d07ae2\"\n}"
+				}
+			]
+		}
+	]
+}
