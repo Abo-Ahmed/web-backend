@@ -1,0 +1,139 @@
+
+
+<!-- A SOAP message MUST be encoded using XML -->
+<!-- A SOAP message MUST use the SOAP Envelope namespace -->
+<!-- A SOAP message must NOT contain a DTD reference -->
+<!-- A SOAP message must NOT contain XML Processing Instructions -->
+
+<!-- soap structure -->
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Header>
+...
+</soap:Header>
+
+<soap:Body>
+...
+  <soap:Fault>
+  ...
+  </soap:Fault>
+</soap:Body>
+
+</soap:Envelope>
+
+
+<!-- header with mustUnderstand -->
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Header>
+  <m:Trans xmlns:m="https://www.w3schools.com/transaction/"
+  soap:mustUnderstand="1">234
+  </m:Trans>
+</soap:Header>
+...
+...
+</soap:Envelope>
+
+<!-- header with actor -->
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Header>
+  <m:Trans xmlns:m="https://www.w3schools.com/transaction/"
+  soap:actor="https://www.w3schools.com/code/">234
+  </m:Trans>
+</soap:Header>
+...
+...
+</soap:Envelope>
+
+<!-- body request -->
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Body>
+  <m:GetPrice xmlns:m="https://www.w3schools.com/prices">
+    <m:Item>Apples</m:Item>
+  </m:GetPrice>
+</soap:Body>
+
+</soap:Envelope>
+
+<!-- soap responce -->
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Body>
+  <m:GetPriceResponse xmlns:m="https://www.w3schools.com/prices">
+    <m:Price>1.90</m:Price>
+  </m:GetPriceResponse>
+</soap:Body>
+
+</soap:Envelope>
+
+<!-- http protocol -->
+POST /item HTTP/1.1
+Host: 189.123.255.239
+Content-Type: text/plain
+Content-Length: 200
+
+<!-- successful request -->
+200 OK
+Content-Type: text/plain
+Content-Length: 200
+
+<!-- failed request -->
+400 Bad Request
+Content-Length: 0
+
+
+<!-- soap request example -->
+POST /InStock HTTP/1.1
+Host: www.example.org
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Body xmlns:m="http://www.example.org/stock">
+  <m:GetStockPrice>
+    <m:StockName>IBM</m:StockName>
+  </m:GetStockPrice>
+</soap:Body>
+
+</soap:Envelope>
+
+<!-- soap respnce example -->
+HTTP/1.1 200 OK
+Content-Type: application/soap+xml; charset=utf-8
+Content-Length: nnn
+
+<?xml version="1.0"?>
+<soap:Envelope
+xmlns:soap="http://www.w3.org/2003/05/soap-envelope/"
+soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
+
+<soap:Body xmlns:m="http://www.example.org/stock">
+  <m:GetStockPriceResponse>
+    <m:Price>34.5</m:Price>
+  </m:GetStockPriceResponse>
+</soap:Body>
+
+</soap:Envelope>
+
+

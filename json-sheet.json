@@ -1,0 +1,224 @@
+
+JSON: JavaScript Object Notation.;
+
+
+
+// we can convert any js object to json and vise verse
+
+var myObj = { "name":"John", "age":31, "city":"New York" };
+var myJSON = JSON.stringify(myObj);
+
+
+// convert json to js object
+var myJSON = '{ "name":"John", "age":31, "city":"New York" }';
+var myObj = JSON.parse(myJSON);
+ myObj.name;
+
+//  Data is in name/value pairs
+// Data is separated by commas
+// Curly braces hold objects
+// Square brackets hold arrays
+
+
+//You can access nested JSON objects by using the dot notation or bracket notation:
+
+x = myObj.cars.car2;
+//or:
+x = myObj.cars["car2"];
+
+
+// Use the delete keyword to delete properties from a JSON object:
+delete myObj.cars.car2;
+
+
+
+
+// use for loop to access json object properities
+myObj = { "name":"John", "age":30, "car":null };
+for (x in myObj) {
+    document.getElementById("demo").innerHTML += myObj[x];
+}
+
+
+
+// send request to server and get json data
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        document.getElementById("demo").innerHTML = myObj.name;
+    }
+};
+xmlhttp.open("GET", "json_demo.txt", true);
+xmlhttp.send();
+
+
+//The JSON.stringify() function will remove any functions from a JavaScript object, 
+//both the key and the value:
+
+
+
+
+
+
+// In JSON, values must be one of the following data types:
+
+// a string
+// a number
+// an object (JSON object)
+// an array
+// a boolean
+// null
+
+// In JavaScript values can be all of the above, plus any other valid JavaScript expression, including:
+
+// a function
+// a date
+// undefined
+
+
+
+// In JSON, string values must be written with double quotes: not a single quote
+
+
+// The file type for JSON files is ".json"
+// The MIME type for JSON text is "application/json"
+
+
+// valid json array
+{
+"employees":[ "John", "Anna", "Peter" ]
+}
+
+//valid json boolean or null
+{ "sale":true }
+
+
+
+
+// JSON stands for JavaScript Object Notation
+// JSON is a lightweight data-interchange format
+// JSON is plain text written in JavaScript object notation
+// JSON is used to send data between computers
+// JSON is language independent *
+
+
+// avaScript has a built in function for converting JSON strings into JavaScript objects:
+JSON.parse()
+
+// JavaScript also has a built in function for converting an object into a JSON string:
+JSON.stringify()
+
+// SON syntax is derived from JavaScript object notation syntax:
+Data is in name/value pairs
+Data is separated by commas
+Curly braces hold objects
+Square brackets hold arrays
+
+// In JSON, keys must be strings, written with double quotes
+{"name":"John"}
+// In JavaScript, keys can be strings, numbers, or identifier names:
+{name:"John"}
+
+// In JSON, values must be one of the following data types:
+a string
+a number
+an object
+an array
+a boolean
+null
+
+// Both JSON and XML are "self describing" (human readable)
+// Both JSON and XML are hierarchical (values within values)
+// Both JSON and XML can be parsed and used by lots of programming languages
+// Both JSON and XML can be fetched with an XMLHttpRequest
+
+
+// Date objects are not allowed in JSON.
+// If you need to include a date, write it as a string.
+// You can convert it back into a date object later:
+const text = '{"name":"John", "birth":"1986-12-14", "city":"New York"}';
+const obj = JSON.parse(text);
+obj.birth = new Date(obj.birth);
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.birth;
+
+
+// Convert a string into a date, using the reviver function:
+const text = '{"name":"John", "birth":"1986-12-14", "city":"New York"}';
+const obj = JSON.parse(text, function (key, value) {
+  if (key == "birth") {
+    return new Date(value);
+  } else {
+    return value;
+  }
+});
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.birth;
+
+
+// Functions are not allowed in JSON.
+// If you need to include a function, write it as a string.
+// You can convert it back into a function later
+// You should avoid using functions in JSON, the functions will lose their scope, and you would have to use eval() to convert them back into functions.
+const text = '{"name":"John", "age":"function () {return 30;}", "city":"New York"}';
+const obj = JSON.parse(text);
+obj.age = eval("(" + obj.age + ")");
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.age();
+
+// Storing data local storage:
+const myObj = {name: "John", age: 31, city: "New York"};
+const myJSON = JSON.stringify(myObj);
+localStorage.setItem("testJSON", myJSON);
+
+// Retrieving data from local storages:
+let text = localStorage.getItem("testJSON");
+let obj = JSON.parse(text);
+document.getElementById("demo").innerHTML = obj.name;
+
+// The JSON.stringify() function will remove any functions from a JavaScript object, both the key and the value
+// This can be omitted if you convert your functions into strings before running the JSON.stringify() function.
+const obj = {name: "John", age: function () {return 30;}, city: "New York"};
+obj.age = obj.age.toString();
+const myJSON = JSON.stringify(obj);
+
+// You can access object values by using dot (.) notation:
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+x = myObj.name;
+// You can also access object values by using bracket ([]) notation:
+x = myObj["name"];
+
+// You can loop through object properties with a for-in loop:
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+let text = "";
+for (const x in myObj) {
+  text += x + ", ";
+}
+
+// In a for-in loop, use the bracket notation to access the property values:
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+let text = "";
+for (const x in myObj) {
+  text += myObj[x] + ", ";
+}
+
+
+// Use the XMLHttpRequest to get data from the server:
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  document.getElementById("demo").innerHTML = myObj.name;
+};
+xmlhttp.open("GET", "json_demo.txt");
+xmlhttp.send();
+
+// Objects in PHP can be converted into JSON by using the PHP function json_encode()
+<?php
+$myObj->name = "John";
+$myObj->age = 30;
+$myObj->city = "New York";
+$myJSON = json_encode($myObj);
+echo $myJSON;
+?>
+

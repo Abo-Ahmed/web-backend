@@ -1,0 +1,238 @@
+
+
+# Comments start with # and go till newline, 
+# Whitespace isn't free, indentation must be spaces, not tabs. 
+# YAML will consider that lines prefixed with more spaces than the parent key are contained inside it. 
+
+####################
+# An sequence of scalar strings in YAML looks like:
+####################
+
+# flow style
+[ one, two, three ]   
+
+# block style
+- one
+- two
+- three
+
+####################
+# A mapping consists of key/value pairs:
+####################
+
+# block style
+index: 4  
+name: nali
+
+# flow style
+{ index: 4, name: nali }   
+
+# nested (equivalent of { level: { one: { two: fun } } }):
+level:
+  one:
+    two: fun
+
+# Basic YAML Types
+integer: 25
+string: "25"
+float: 25.0
+boolean: true
+null type: null
+
+# A list of dictionaries:
+children:
+    -   name: Jimmy Smith
+        age: 15
+    -   name: Jenny Smith
+        age 12
+
+####################
+# Block Style Mappings
+####################
+
+# With implicit keys:
+key: value
+another key:
+  - some
+  - more
+  - values
+[1, 2, 3]: last value, which has a flow style key
+ 
+# With implicit and explicit keys:
+? key
+: value
+another key:
+  - some
+  - more
+  - values
+? [1, 2, 3]
+: last value, which has a flow style key
+#  key , another key and [1, 2, 3] are keys of the same mapping, although they use different key styles.
+
+# Nested mappings:
+first level:
+  second level:
+    ? third level
+    :
+      forth level: value of implicit key
+    ? third level, second key
+    : value of explicit key
+  ?
+    mapping as: key of
+    another: mapping
+  : scalar value of mapping key
+first level, second key:
+  last value
+
+
+####################
+# Comments
+####################
+
+# This comment occupies a whole line
+- some item # This comment succeeds content of a line
+- http://example.com/#nocomment
+- "This # does not introduce a comment."
+- |
+    This is a block scalar.
+    A # inside it does not introduce a comment.
+   # unless it is less indented than the first line (this is one)
+
+####################
+# Escaping Characters
+####################
+
+# YAML supports three styles of escape notation:
+
+# Entity Escapes
+a. space: "&#x20;"
+b. colon: "&#58;"
+c. ampersand: "&amp;"
+
+# Unicode Escapes
+a. space: "\u0020"
+b. single quote: "\u0027"
+c. double quote: "\u0022"
+
+# Quoted Escapes
+a. double quote in single quote: 'Is "I always lie" a true statement?'
+b. nested double quote: " She said, "I quit" "
+
+####################
+# Splitting text strings over multiple lines
+####################
+
+- Without quotes:
+   You can just
+   split a long piece of text like this.
+- With quotes:
+    "[But be careful:
+     if you \"need\" punctuation, put double quotes around it. You can ev\
+     en split without spaces by using backslashes."
+- Or single quotes:
+    'This works
+     but isn''t as flexible'
+- If you want to keep those new line characters: | 
+    Then do
+    it this way with 
+    a pipe (|) character. (This string has three \n characters)
+- Or you can have just the one final new line: >
+    This string has
+    just one \n character, at the very end.
+- Block indicators:
+    Look up >-, >+, |- and |+ for fine tuning.
+ 
+####################
+# YAML Sequential Data
+####################
+
+Same list level:
+- Cat
+- Dog
+- Goldfish
+ 
+Nested List:
+-
+ - Cat
+ - Dog
+ - Goldfish
+
+# Collection Indicators
+? Key indicator
+: Value indicator
+- Nested series entry indicator
+, Separate in-line branch entries
+[] Surround in-line series branch
+{} Surround in-line keyed branch
+
+
+# Scalar Indicators
+'' Surround in-line unescaped scalar ('' escaped ')
+" Surround in-line escaped scalar (see escape codes below)"
+| Block scalar indicator
+> Folded scalar indicator
+- Strip chomp modifier (|- or >-)
++ Keep chomp modifier (|+ or >+)
+1-9  Explicit indentation modifier (|1 or >2)
+# Modifiers can be combined (|2-, >+1)
+
+# Alias Indicators
+& Anchor property
+* Alias indicator
+
+# Document Indicators
+% Directive indicator
+--- Document header
+... Document terminator
+
+# Special Keys
+= Default "value" mapping key
+<< Merge keys from another mapping
+
+# Language Independent Scalar Types
+{ ~, null } # Null (no value)
+[ 1234, 0x4D2, 02333 ] # [ Decimal int, Hexadecimal int, Octal int ]
+[ 1_230.15, 12.3015e+02 ] # [ Fixed float, Exponential float ]
+[ .inf, -.Inf, .NAN ] # [ Infinity (float), Negative, Not a number ]
+{ Y, true, Yes, ON } # Boolean true
+{ n, FALSE, No, off } # Boolean false
+
+# Base 64 binary value
+? !!binary >
+  R0lG...BADS=
+
+####################
+# Escape Codes
+####################
+
+# Numeric
+"\x12"       : 8-bit
+"\u1234"     : 16-bit
+"\U00102030" : 32-bit
+
+# Protective
+"\\"     : '\'
+"\""     : '"'
+"\ "     : ' '
+"\<TAB>" : TAB
+
+# C
+"\0": NUL
+"\a": BEL
+"\b": BS
+"\f": FF
+"\n": LF
+"\r": CR
+"\t": TAB
+"\v": VTAB
+
+# Additional
+"\e": ESC
+"\_": NBSP
+"\N": NEL
+"\L": LS
+"\P": PS
+
+
+
+

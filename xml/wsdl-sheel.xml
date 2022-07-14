@@ -1,0 +1,127 @@
+
+
+<!-- main structure -->
+<definitions>
+
+<types>
+  data type definitions........
+</types>
+
+<message>
+  definition of the data being communicated....
+</message>
+
+<portType>
+  set of operations......
+</portType>
+
+<binding>
+  protocol and data format specification....
+</binding>
+
+</definitions>
+
+<!-- wsdl example -->
+<message name="getTermRequest">
+  <part name="term" type="xs:string"/>
+</message>
+
+<message name="getTermResponse">
+  <part name="value" type="xs:string"/>
+</message>
+
+<portType name="glossaryTerms">
+  <operation name="getTerm">
+    <input message="getTermRequest"/>
+    <output message="getTermResponse"/>
+  </operation>
+</portType>
+
+<!-- one way operation -->
+<message name="newTermValues">
+  <part name="term" type="xs:string"/>
+  <part name="value" type="xs:string"/>
+</message>
+
+<portType name="glossaryTerms">
+  <operation name="setTerm">
+    <input name="newTerm" message="newTermValues"/>
+  </operation>
+</portType >
+
+<!-- reuest-responce operation -->
+<message name="getTermRequest">
+  <part name="term" type="xs:string"/>
+</message>
+
+<message name="getTermResponse">
+  <part name="value" type="xs:string"/>
+</message>
+
+<portType name="glossaryTerms">
+  <operation name="getTerm">
+    <input message="getTermRequest"/>
+    <output message="getTermResponse"/>
+  </operation>
+</portType>
+
+<!-- binding to soap -->
+<message name="getTermRequest">
+  <part name="term" type="xs:string"/>
+</message>
+
+<message name="getTermResponse">
+  <part name="value" type="xs:string"/>
+</message>
+
+<portType name="glossaryTerms">
+  <operation name="getTerm">
+    <input message="getTermRequest"/>
+    <output message="getTermResponse"/>
+  </operation>
+</portType>
+
+<binding type="glossaryTerms" name="b1">
+   <soap:binding style="document"
+   transport="http://schemas.xmlsoap.org/soap/http" />
+   <operation>
+     <soap:operation soapAction="http://example.com/getTerm"/>
+     <input><soap:body use="literal"/></input>
+     <output><soap:body use="literal"/></output>
+  </operation>
+</binding>
+
+These should (may?) be in the WSDL file.
+definitions - root WSDL Element
+types - data types to be used between client and server
+message - one-way msg request or response. defines name and contains zero or more msg part elements (msg params or return vals).
+portType - combines message elements to form complete operation. Can define multiple operations.
+binding - describes concrete specifics of how svc is implemented. Includes build-in extensions for defining SOAP svcs.
+service - defines address for invoking specific service.
+documentation - human-readable docs. Can be included in other WSDL elements.
+import - imports other WSDL documents of XML Schemas
+Service -> ‘Java Class’
+Operation -> ‘Java Function’ The Operation defines the name of the Operation and ties the request response messages together.
+
+Port -> A service is assessable on a Port.  A Port has a unique name space and binding attribute. The Port specifies the service address. Web service can be exposed as SOAP or HTTP. The same web service can also be exposed by multiple Ports.
+SOAP example:
+<port name='WeatherSoapPort' binding='wsdlns:WeatherSoapBinding' >
+<soap:address   location='http://localhost/demos/wsdl/devxpert/weatherservice.asp' />
+</port>
+
+HTTP example:
+<port name='WeatherSoapPort' binding='wsdlns:WeatherSoapBinding' >
+<http:address location="http://localhost/demos/wsdl/devxpert/weatherGET.asp"/
+</port>
+
+Message -> Normally two messages required i.e. input message and output message. Messages contain zero or more <part> elements. Sample messages below
+<message name='Weather.GetTemperature'>
+    <part name='zipcode' type='xsd:string'/>
+    <part name='celsius' type='xsd:boolean'/>
+ </message>
+
+ <message name='Weather.GetTemperatureResponse'>
+    <part name='Result' type='xsd:float'/>
+ </message>rt name='WeatherSoapPort'
+
+Binding -> ‘Ties it all together’ - specifies binding(s) of each operation in the PortTypes section

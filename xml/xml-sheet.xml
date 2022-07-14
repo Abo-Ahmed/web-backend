@@ -1,0 +1,132 @@
+
+
+<!-- XML Declaration -->
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>	
+
+The XML declaration is a processing instruction that identifies the document as being XML. 
+All XML documents should begin with an XML declaration.
+Rules:
+If the XML declaration is included, it must be situated at the first position of the first line in the XML documentwell-formedness constraint.
+If the XML declaration is included, it must contain the version number attributewell-formedness constraint.
+If all of the attributesglossary are declared in an XML declaration, they must be placed in the order shown abovewell-formedness constraint.
+If any elements, attributes, or entities are used in the XML document that are referenced or defined in an external DTD, standalone="no" must be includedvalidity constraint.
+The XML declaration must be in lower case (except for the encoding declarations)well-formedness constraint.
+The XML declaration has no closing tag, that is </?xml> well-formedness constraint.
+
+<!-- Comments -->	
+Comments are used to hide text from the end user when the output document is displayed. They are useful as notes to the author of the document, or other authors who may modify the document.
+Rules:
+Comments may be placed anywhere after the XML declaration.
+Comments may not be placed inside a tagglossary, but may be placed inside a document type declaration.
+Double dashes '--' are not allowed inside a commentwell-formedness constraint.
+markupglossary may be used inside a comment.
+Nested comments are not allowed.
+
+<!-- External style sheet for browse your xml document -->
+<?xml-stylesheet type="text/css" href="your_documents_css.css" ?>	
+
+<!-- Processing Instruction -->
+<?word document="test.doc" ?>	
+
+<!-- Internal DOCTYPE Declaration -->
+<!DOCTYPE root_element [ <!ELEMENT root_element (#PCDATA)> ]>	
+
+<!-- External DOCTYPE Declaration -->
+<!DOCTYPE root_element SYSTEM "your_documents_dtd.dtd">	
+
+<!-- Tag of empty element -->
+<emptyElement/>	
+
+Well-Formed Document (well formedness)	 
+Has a single root element	 
+All other element are correctly nested:
+- all other elements are children of the root element	
+- all elements are correctly paired	</element1>	Close tag of "element1"
+- the element name in a start-tag and an end-tag are exactly the same	
+- attribute names are used only once within the same element	
+
+Valid XML document	
+Abide by the constraints placed on each element's position in the document	
+Abide by the constaints placed on the attributes of each element
+Require a Document Type Definition or XML Schema to specify the constraints
+
+
+Processing Instruction 
+Processing instructions are used to embed information intended for proprietary applications. The XML declaration is an example of a processing instruction. Processing instructions beginning with 'xml' or 'XML' have been reserved for standardization in the XML Version 1.0 specification and onwards.
+<?PI-target ?>	
+PI-target: any name that does not contain the letters 'X' or 'x', 'M' or 'm', or 'L' or 'l' in that order.
+Rules:
+The string '?>' cannot be placed within a processing instruction, therefore, nested processing instructions are not allowed
+ 
+CDATA Section 
+CDATA sections are used to display markup without the XML processor trying to interpret that markup. They are particularly useful when you want to display sections of XML code.
+ <![CDATA[
+
+ ...any characters (including markup)...
+
+]]>	
+Rules:
+The string ']]>' cannot be placed within a CDATA section, therefore, nested CDATA sections are not allowedwell-formedness constraint.
+ 
+
+DOCTYPE Declaration & DTDs	Related ReferencesTools 
+The document type (DOCTYPE) declaration consists of an internal, or references an external Document Type Definition (DTD). It can also have a combination of both internal and external DTDs. The DTD defines the constraints on the structure of an XML document. It declares all of the document's element typesglossary, children element types, and the order and number of each element type. It also declares any attributes, entities, notations, processing instructions, comments, and PE references in the document.
+A document can use both internal and external DTD subsets. The internal DTD subset is specified between the square brackets of the DOCTYPE declaration. The declaration for the external DTD subset is placed before the square brackets immediately after the SYSTEM keyword.
+
+Important:
+DTD (DocType Declaration) in one page >>>
+
+Validators:
+W3C MarkUp Validator. - Also known as the HTML validator, it helps check Web documents in formats like HTML and XHTML, SVG or MathML >>
+Checklink - Checks anchors (hyperlinks) in a HTML/XHTML document. Useful to find broken links, etc. >>
+CSS Validator - validates CSS stylesheets or documents using CSS stylesheets. >>
+RDF Validator >>
+Feed Validator. - it helps check newsfeeds in formats like ATOM, RSS of various flavors. >>
+P3P Validator - Checks whether a site is P3P enabled and controls protocol and syntax of Policy-Reference-File and Policy >>
+XML Schema Validator >>
+MUTAT - a human-centered testing tool (framework) >>
+ 
+The Internal DTD:
+<!DOCTYPE root_element [
+ Document Type Definition (DTD):
+ elements/attributes/entities/notations/processing instructions/comments/PE references
+]>	
+Rules:
+The document type declaration must be placed between the XML declaration and the first element (root element) in the documentwell-formedness constraint.
+The keyword DOCTYPE must be followed by the name of the root element in the XML documentvalidity constraint.
+The keyword DOCTYPE must be in upper casewell-formedness constraint.
+ 
+"Private" External DTDs:
+<!DOCTYPE root_element SYSTEM "DTD_location">	
+External DTDs are useful for creating a common DTD that can be shared between multiple documents. Any changes that are made to the external DTD automatically updates all the documents that reference it. There are two types of external DTDs: private, and public.
+Private external DTDs are identified by the keyword SYSTEM, and are intended for use by a single author or group of authors.
+Public external DTDs are identified by the keyword PUBLIC and are intended for broad use. The "DTD_location" is used to find the public DTD if it cannot be located by the "DTD_name".
+Rules:
+If any elements, attributes, or entities are used in the XML document that are referenced or defined in an external DTD, standalone="no" must be included in the XML declarationvalidity constraint.
+DTD_location: relative or absolute URL
+DTD_name follows the syntax: "prefix//owner_of_the_DTD//description_of_the_DTD//ISO 639_language_identifier"
+
+Prefixes are allowed in the DTD name.
+Prefix:	Definition:
+ISO	The DTD is an ISO standard. All ISO standards are approved.
++	The DTD is an approved non-ISO standard.
+-	The DTD is an unapproved non-ISO standard.
+
+
+
+DTD example
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE note [
+<!ENTITY nbsp "&#xA0;">
+<!ENTITY writer "Writer: Donald Duck.">
+<!ENTITY copyright "Copyright: W3Schools.">
+]>
+
+<note>
+<to>Tove</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+<body>Don't forget me this weekend!</body>
+<footer>&writer;&nbsp;&copyright;</footer>
+</note>
